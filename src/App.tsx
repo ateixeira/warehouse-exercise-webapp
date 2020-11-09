@@ -1,13 +1,8 @@
 import React from "react";
-import "./app.css";
-import { ArticlesList } from "./article";
+import "./app.scss";
 
 function App() {
-  return (
-    <div className="app">
-      <ArticlesList />
-    </div>
-  );
+  return <div className="app"></div>;
 }
 
 export default App;
