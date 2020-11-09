@@ -1,8 +1,36 @@
 @import "../styles/index";
 
 .card {
+  display: flex;
+  align-items: center;
   background-color: $white;
   border: 1px solid $border-grey;
   border-radius: 5px;
   height: 3.5rem;
+  padding: 0 2rem;
+
+  .article {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .column {
+      display: flex;
+      justify-content: center;
+    }
+    .selector {
+      width: 3rem;
+    }
+    .id {
+      width: 5rem;
+    }
+    .name {
+      width: 100%;
+      padding-left: 1rem;
+      justify-content: flex-start;
+    }
+    .stock {
+      width: 5rem;
+    }
+  }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Panel, Layout } from "./screens";
 import { Menu } from "./components";
-import { Article, Product } from "./types";
+import { Article, PanelTypes, Product } from "./types";
 import "./app.scss";
 
 const articles: Article[] = [
@@ -32,10 +32,18 @@ function App() {
         <Layout>
           <Switch>
             <Route path="/articles">
-              <Panel title="Articles" items={articles} />
+              <Panel
+                title="Articles"
+                type={PanelTypes.Article}
+                items={articles}
+              />
             </Route>
             <Route path="/products">
-              <Panel title="Products" items={products} />
+              <Panel
+                title="Products"
+                type={PanelTypes.Product}
+                items={products}
+              />
             </Route>
           </Switch>
         </Layout>
