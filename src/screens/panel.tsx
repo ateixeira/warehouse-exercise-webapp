@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Filters } from "../components";
 import "./panel.scss";
 
 export interface IProps {
@@ -6,7 +7,12 @@ export interface IProps {
 }
 
 const Panel = (props: IProps) => {
-  return <div className="title">{props.title}</div>;
+  return (
+    <>
+      <div className="title">{props.title}</div>
+      <Filters title={props.title} />
+    </>
+  );
 };
 
 export default Panel;
