@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Articles, Home, Products } from "./screens";
+import { Panel, Layout } from "./screens";
 import { Menu } from "./components";
 import "./app.scss";
 
@@ -9,18 +9,16 @@ function App() {
     <Router>
       <div className="app">
         <Menu />
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/articles">
-            <Articles />
+            <Layout>
+              <Panel title="Articles" />
+            </Layout>
           </Route>
           <Route path="/products">
-            <Products />
-          </Route>
-          <Route path="/">
-            <Home />
+            <Layout>
+              <Panel title="Products" />
+            </Layout>
           </Route>
         </Switch>
       </div>

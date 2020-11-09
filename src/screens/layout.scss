@@ -1,0 +1,33 @@
+@import "../styles/index";
+
+.layout {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  background-color: aquamarine;
+  margin-top: 3rem;
+
+  .container {
+    padding: 3rem 1.5rem;
+    width: 100%;
+
+    @include sm {
+      width: $small-width;
+      background-color: red;
+    }
+    @include md {
+      width: $medium-width;
+      background-color: green;
+    }
+    @include lg {
+      width: $large-width;
+      background-color: blue;
+    }
+    @include xl {
+      width: $x-large-width;
+      background-color: purple;
+    }
+  }
+}
