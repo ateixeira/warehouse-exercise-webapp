@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Menu: React.FC = () => {
   return (
     <div className="menu">
+      <div className="logo">WAREHOUSE MANAGEMENT</div>
       <nav>
         <ul>
           <li>
@@ -17,6 +18,7 @@ const Menu: React.FC = () => {
           </li>
         </ul>
       </nav>
+      <div className="contact"></div>
     </div>
   );
 };
