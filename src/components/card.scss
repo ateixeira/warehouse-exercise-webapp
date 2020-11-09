@@ -9,20 +9,45 @@
   height: 3.5rem;
   padding: 0 2rem;
 
+  .product,
+  .article {
+    .column {
+      display: flex;
+      justify-content: center;
+      font-family: "Work Sans", sans-serif;
+      font-weight: 500;
+    }
+  }
   .article {
     display: flex;
     justify-content: space-between;
     width: 100%;
 
-    .column {
-      display: flex;
-      justify-content: center;
-    }
     .selector {
       width: 3rem;
     }
     .id {
       width: 5rem;
+    }
+    .name {
+      width: 100%;
+      padding-left: 1rem;
+      justify-content: flex-start;
+    }
+    .stock {
+      width: 5rem;
+    }
+  }
+  .product {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .selector {
+      width: 3rem;
+    }
+    .id {
+      width: 7rem;
     }
     .name {
       width: 100%;

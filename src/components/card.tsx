@@ -13,7 +13,7 @@ const renderItem = (item: Article | Product, type: PanelTypes) => {
     case PanelTypes.Article:
       return renderArticle(item as Article);
     case PanelTypes.Product:
-      return item as Product;
+      return renderProduct(item as Product);
   }
 };
 
@@ -26,6 +26,18 @@ const renderArticle = (article: Article) => {
       <div className="column id">{article.art_id}</div>
       <div className="column name">{article.name}</div>
       <div className="column stock">{article.stock}</div>
+    </div>
+  );
+};
+const renderProduct = (product: Product) => {
+  return (
+    <div className="product">
+      <div className="column selector">
+        <input type="checkbox" />
+      </div>
+      <div className="column id">{product.id}</div>
+      <div className="column name">{product.name}</div>
+      <div className="column stock">{`€ ${product.price}`}</div>
     </div>
   );
 };
