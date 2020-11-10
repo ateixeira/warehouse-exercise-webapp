@@ -24,11 +24,6 @@ function App() {
   const articles = useQuery<ArticleData, {}>(GET_ARTICLES, {});
   const products = useQuery<ProductData, {}>(GET_PRODUCTS, {});
 
-  console.log("articles");
-  console.log(articles);
-  console.log("products");
-  console.log(products);
-
   return (
     <Router>
       <div className="app">

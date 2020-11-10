@@ -1,8 +1,7 @@
 import { Article } from "./article.types";
 
 export type Product = {
-  id: string;
+  _id: string;
   name: string;
-  price: number;
-  articles: Article[];
+  contain_articles: Article[];
 };

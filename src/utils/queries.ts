@@ -16,13 +16,11 @@ export const GET_PRODUCTS = gql`
   query getAllProducts {
     getAllProducts {
       products {
-        id
+        _id
         name
-        price
-        articles {
+        contain_articles {
           art_id
-          name
-          stock
+          amount_of
         }
         updatedOn
       }
@@ -30,9 +28,20 @@ export const GET_PRODUCTS = gql`
   }
 `;
 
-export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
+export const UPLOAD_ARTICLE_FILE = gql`
+  mutation uploadArticleFile($file: Upload!) {
+    uploadArticleFile(file: $file) {
+      path
+      id
+      filename
+      mimetype
+    }
+  }
+`;
+
+export const UPLOAD_PRODUCT_FILE = gql`
+  mutation uploadProductFile($file: Upload!) {
+    uploadProductFile(file: $file) {
       path
       id
       filename

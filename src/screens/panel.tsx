@@ -14,7 +14,7 @@ const Panel = (props: IProps) => {
   return (
     <>
       <div className="title">{props.title}</div>
-      <Data items={props.items} />
+      <Data items={props.items} type={props.type} />
       <Filters title={props.title} />
       <div className="content">
         <div className="header"></div>

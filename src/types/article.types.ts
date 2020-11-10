@@ -3,3 +3,8 @@ export type Article = {
   name: string;
   stock: number;
 };
+
+export type ProductArticle = {
+  art_id: number;
+  amount_of: number;
+};

@@ -35,9 +35,8 @@ const renderProduct = (product: Product) => {
       <div className="column selector">
         <input type="checkbox" />
       </div>
-      <div className="column id">{product.id}</div>
+      <div className="column id">{product._id}</div>
       <div className="column name">{product.name}</div>
-      <div className="column stock">{`€ ${product.price}`}</div>
     </div>
   );
 };
