@@ -3,17 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Panel, Layout } from "./screens";
 import { Menu } from "./components";
 import { Article, PanelTypes, Product } from "./types";
+import { useQuery } from "@apollo/client";
+import { GET_ARTICLES } from "./utils/queries";
 import "./app.scss";
 
-const articles: Article[] = [
-  { art_id: 1, name: "Article 1", stock: 10 },
-  { art_id: 2, name: "Article 2", stock: 20 },
-  { art_id: 3, name: "Article 3", stock: 30 },
-  { art_id: 4, name: "Article 4", stock: 40 },
-  { art_id: 5, name: "Article 5", stock: 50 },
-  { art_id: 6, name: "Article 6", stock: 60 },
-  { art_id: 7, name: "Article 7", stock: 70 },
-];
 const products: Product[] = [
   { id: "product1", name: "Product", price: 11.11, articles: [] },
   { id: "product2", name: "Product", price: 22.22, articles: [] },
@@ -24,29 +17,42 @@ const products: Product[] = [
   { id: "product7", name: "Product", price: 77.77, articles: [] },
   { id: "product8", name: "Product", price: 88.88, articles: [] },
 ];
+interface ArticleData {
+  getAllArticles: ArticleList;
+}
+interface ArticleList {
+  articles: Article[];
+}
+
 function App() {
+  const { loading, data } = useQuery<ArticleData, {}>(GET_ARTICLES, {});
+
   return (
     <Router>
       <div className="app">
         <Menu />
-        <Layout>
-          <Switch>
-            <Route path="/articles">
-              <Panel
-                title="Articles"
-                type={PanelTypes.Article}
-                items={articles}
-              />
-            </Route>
-            <Route path="/products">
-              <Panel
-                title="Products"
-                type={PanelTypes.Product}
-                items={products}
-              />
-            </Route>
-          </Switch>
-        </Layout>
+        {data && (
+          <Layout>
+            <Switch>
+              <Route path="/articles">
+                <Panel
+                  title="Articles"
+                  type={PanelTypes.Article}
+                  loading={loading}
+                  items={data?.getAllArticles.articles}
+                />
+              </Route>
+              <Route path="/products">
+                <Panel
+                  title="Products"
+                  type={PanelTypes.Product}
+                  loading={loading}
+                  items={products}
+                />
+              </Route>
+            </Switch>
+          </Layout>
+        )}
       </div>
     </Router>
   );

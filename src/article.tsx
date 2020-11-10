@@ -1,5 +1,6 @@
 import React from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { GET_ARTICLES } from "./utils/queries";
 
 interface Article {
   art_id: number;
@@ -13,18 +14,6 @@ interface ArticleData {
 interface ArticleList {
   articles: Article[];
 }
-
-const GET_ARTICLES = gql`
-  query getAllArticles {
-    getAllArticles {
-      articles {
-        art_id
-        name
-        stock
-      }
-    }
-  }
-`;
 
 export function ArticlesList() {
   const { loading, data } = useQuery<ArticleData, {}>(GET_ARTICLES, {});

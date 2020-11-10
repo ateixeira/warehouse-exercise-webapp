@@ -5,9 +5,11 @@ import App from "./app";
 import reportWebVitals from "./reportWebVitals";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { createUploadLink } from "apollo-upload-client";
 
+const link = createUploadLink({ uri: "http://localhost:4000/graphql" });
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  link,
   cache: new InMemoryCache(),
 });
 
