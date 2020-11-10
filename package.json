@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.5",
+    "@apollo/react-hooks": "^4.0.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,6 +12,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "apollo-upload-client": "^14.1.3",
     "graphql": "^15.4.0",
     "node-sass": "^4.0.0",
     "react": "^17.0.1",
@@ -23,6 +25,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "buildAndStart": "react-scripts build && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -47,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/apollo-upload-client": "^14.1.0",
     "@types/graphql": "^14.5.0",
     "@types/react-router-dom": "^5.1.6"
   }
