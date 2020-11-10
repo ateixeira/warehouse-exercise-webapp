@@ -34,27 +34,21 @@
       padding-left: 1rem;
       justify-content: flex-start;
     }
-    .stock {
-      width: 5rem;
-    }
   }
   .product {
     display: flex;
     justify-content: space-between;
     width: 100%;
 
-    .selector {
-      width: 3rem;
+    .productData {
+      display: flex;
+
+      .name {
+        padding-left: 1rem;
+        justify-content: flex-start;
+      }
     }
-    .id {
-      width: 7rem;
-    }
-    .name {
-      width: 100%;
-      padding-left: 1rem;
-      justify-content: flex-start;
-    }
-    .stock {
+    .price {
       width: 5rem;
     }
   }

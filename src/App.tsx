@@ -2,33 +2,47 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Panel, Layout } from "./screens";
 import { Menu } from "./components";
-import { Article, PanelTypes, Product } from "./types";
+import {
+  Article,
+  ArticleData,
+  PanelTypes,
+  Product,
+  ProductData,
+  WarehouseData,
+} from "./types";
 import { useQuery } from "@apollo/client";
 import { GET_ARTICLES, GET_PRODUCTS } from "./utils/queries";
 import "./app.scss";
-
-interface ArticleData {
-  getAllArticles: ArticleList;
-}
-interface ProductData {
-  getAllProducts: ProductList;
-}
-interface ArticleList {
-  articles: Article[];
-}
-interface ProductList {
-  products: Product[];
-}
 
 function App() {
   const articles = useQuery<ArticleData, {}>(GET_ARTICLES, {});
   const products = useQuery<ProductData, {}>(GET_PRODUCTS, {});
 
+  const [articleData, setArticleData] = React.useState<Article[]>([]);
+  const [productData, setProductData] = React.useState<Product[]>([]);
+
+  React.useEffect(() => {
+    if (articles.data?.getAllArticles) {
+      setArticleData(articles.data?.getAllArticles.articles);
+    }
+  }, [articles]);
+
+  React.useEffect(() => {
+    if (products.data?.getAllProducts) {
+      setProductData(products.data?.getAllProducts.products);
+    }
+  }, [products]);
+
+  const data: WarehouseData = {
+    articles: articleData,
+    products: productData,
+  };
+
   return (
     <Router>
       <div className="app">
         <Menu />
-        {articles.data && products.data && (
+        {
           <Layout>
             <Switch>
               <Route path="/articles">
@@ -36,7 +50,7 @@ function App() {
                   title="Articles"
                   type={PanelTypes.Article}
                   loading={articles.loading}
-                  items={articles.data?.getAllArticles?.articles || []}
+                  items={data}
                 />
               </Route>
               <Route path="/products">
@@ -44,12 +58,12 @@ function App() {
                   title="Products"
                   type={PanelTypes.Product}
                   loading={products.loading}
-                  items={products.data?.getAllProducts?.products || []}
+                  items={data}
                 />
               </Route>
             </Switch>
           </Layout>
-        )}
+        }
       </div>
     </Router>
   );

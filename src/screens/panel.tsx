@@ -1,16 +1,28 @@
 import * as React from "react";
 import { Card, Data, Filters } from "../components";
-import { Article, PanelTypes, Product } from "../types";
+import { Article, PanelTypes, Product, WarehouseData } from "../types";
 import "./panel.scss";
 
 export interface IProps {
   title: string;
   type: PanelTypes;
   loading: boolean;
-  items: (Product | Article)[];
+  items: WarehouseData;
 }
 
+const renderArticle = (props: IProps) => {
+  return props.items.articles.map((item: Article, idx) => {
+    return <Card key={`${item.name}-${idx}`} item={item} type={props.type} />;
+  });
+};
+const renderProduct = (props: IProps) => {
+  return props.items.products.map((item: Product, idx) => {
+    return <Card key={`${item.name}-${idx}`} item={item} type={props.type} />;
+  });
+};
 const Panel = (props: IProps) => {
+  console.log("props");
+  console.log(props);
   return (
     <>
       <div className="title">{props.title}</div>
@@ -18,12 +30,9 @@ const Panel = (props: IProps) => {
       <Filters title={props.title} />
       <div className="content">
         <div className="header"></div>
-        {props.items &&
-          props.items.map((item: Article | Product, idx) => {
-            return (
-              <Card key={`${item.name}idx`} item={item} type={props.type} />
-            );
-          })}
+        {props.type === PanelTypes.Article
+          ? renderArticle(props)
+          : renderProduct(props)}
       </div>
     </>
   );

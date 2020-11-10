@@ -1,7 +1,7 @@
-import { Article } from "./article.types";
+import { ProductArticle } from "./article.types";
 
 export type Product = {
   _id: string;
   name: string;
-  contain_articles: Article[];
+  contain_articles: ProductArticle[];
 };

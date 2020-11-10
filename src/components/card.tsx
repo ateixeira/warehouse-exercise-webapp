@@ -9,6 +9,8 @@ export interface IProps {
 }
 
 const renderItem = (item: Article | Product, type: PanelTypes) => {
+  console.log("ITEM");
+  console.log(item);
   switch (type) {
     case PanelTypes.Article:
       return renderArticle(item as Article);
@@ -30,13 +32,19 @@ const renderArticle = (article: Article) => {
   );
 };
 const renderProduct = (product: Product) => {
+  const calculatePrice = () => {
+    // product.contain_articles.reduce((acc, article));
+    return 10.99;
+  };
   return (
     <div className="product">
-      <div className="column selector">
-        <input type="checkbox" />
+      <div className="productData">
+        <div className="column selector">
+          <input type="checkbox" />
+        </div>
+        <div className="column name">{product.name}</div>
       </div>
-      <div className="column id">{product._id}</div>
-      <div className="column name">{product.name}</div>
+      <div className="price">{calculatePrice()}</div>
     </div>
   );
 };
