@@ -20,23 +20,30 @@ function App() {
 
   const [articleData, setArticleData] = React.useState<Article[]>([]);
   const [productData, setProductData] = React.useState<Product[]>([]);
+  const [data, setData] = React.useState<WarehouseData>({
+    articles: [],
+    products: [],
+  });
 
   React.useEffect(() => {
-    if (articles.data?.getAllArticles) {
+    if (!articles.loading && articles.data?.getAllArticles.articles) {
       setArticleData(articles.data?.getAllArticles.articles);
+    } else {
+      setArticleData([]);
     }
-  }, [articles]);
+    if (!products.loading && products.data?.getAllProducts.products) {
+      setProductData(products.data?.getAllProducts.products);
+    } else {
+      setProductData([]);
+    }
+  }, [articles, products]);
 
   React.useEffect(() => {
-    if (products.data?.getAllProducts) {
-      setProductData(products.data?.getAllProducts.products);
-    }
-  }, [products]);
-
-  const data: WarehouseData = {
-    articles: articleData,
-    products: productData,
-  };
+    setData({
+      articles: articleData,
+      products: productData,
+    });
+  }, [articleData, productData]);
 
   return (
     <Router>

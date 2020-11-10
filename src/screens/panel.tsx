@@ -17,12 +17,17 @@ const renderArticle = (props: IProps) => {
 };
 const renderProduct = (props: IProps) => {
   return props.items.products.map((item: Product, idx) => {
-    return <Card key={`${item.name}-${idx}`} item={item} type={props.type} />;
+    return (
+      <Card
+        key={`${item.name}-${idx}`}
+        articles={props.items.articles}
+        item={item}
+        type={props.type}
+      />
+    );
   });
 };
 const Panel = (props: IProps) => {
-  console.log("props");
-  console.log(props);
   return (
     <>
       <div className="title">{props.title}</div>

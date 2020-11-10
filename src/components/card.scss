@@ -42,14 +42,30 @@
 
     .productData {
       display: flex;
+      flex: 2;
 
       .name {
         padding-left: 1rem;
         justify-content: flex-start;
       }
     }
-    .price {
-      width: 5rem;
+
+    .separator {
+      display: flex;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    .articles {
+      display: flex;
+      flex: 2;
+      flex-grow: 1;
+      justify-content: flex-end;
+      width: 100%;
+
+      .article {
+        padding: 0 1rem;
+      }
     }
   }
 }
